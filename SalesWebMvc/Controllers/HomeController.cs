@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Models;
+using SalesWebMvc.Models.ViewModels;
 using System.Diagnostics;
 
 namespace SalesWebMvc.Controllers
@@ -16,7 +17,7 @@ namespace SalesWebMvc.Controllers
         public IActionResult About()
         {
             ViewData["Teacher"] = "Nélio Alves";
-            ViewData["Description"] = "Salles Web MVC App from C# Course";
+            ViewData["Description"] = "Sales Web MVC App from C# Course";
             ViewData["SiteRoute"] = "https://devsuperior.com.br";
             ViewData["SiteName"] = "devsuperior.com.br";
 
