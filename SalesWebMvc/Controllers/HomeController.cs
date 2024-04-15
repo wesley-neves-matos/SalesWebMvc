@@ -13,6 +13,16 @@ namespace SalesWebMvc.Controllers
             _logger = logger;
         }
 
+        public IActionResult About()
+        {
+            ViewData["Teacher"] = "Nélio Alves";
+            ViewData["Description"] = "Salles Web MVC App from C# Course";
+            ViewData["SiteRoute"] = "https://devsuperior.com.br";
+            ViewData["SiteName"] = "devsuperior.com.br";
+
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();

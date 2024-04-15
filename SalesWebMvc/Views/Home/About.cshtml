@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h5>@ViewData["Description"]</h5>
+
+<p>Teacher @ViewData["Teacher"]</p>
+
+<address>
+    <strong>More information: </strong> <a href=@ViewData["SiteRoute"]>@ViewData["SiteName"]</a>
+</address>
