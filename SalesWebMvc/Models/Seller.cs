@@ -8,6 +8,7 @@
         public DateTime BirthDate { get; set; }
         public decimal Salary { get; set; }
 
+        public int DepartmentId { get; set; }
         public Department Department { get; set; }
         ICollection<SalesRecord> SalesRecords { get; set; } = new List<SalesRecord>();
 
