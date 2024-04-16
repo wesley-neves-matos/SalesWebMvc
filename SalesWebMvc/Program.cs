@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
 using SalesWebMvc;
 using SalesWebMvc.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 
 internal class Program
@@ -43,6 +45,8 @@ internal class Program
             }
         }
 
+        SetLocalizationOptions(app);
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
@@ -57,6 +61,15 @@ internal class Program
         app.Run();
     }
 
-
-
+    private static void SetLocalizationOptions(WebApplication app)
+    {
+        var enUS = new CultureInfo("en-US");
+        var localizationOptions = new RequestLocalizationOptions
+        {
+            DefaultRequestCulture = new RequestCulture(enUS),
+            SupportedCultures = new List<CultureInfo> { enUS },
+            SupportedUICultures = new List<CultureInfo> { enUS }
+        };
+        app.UseRequestLocalization(localizationOptions);
+    }
 }

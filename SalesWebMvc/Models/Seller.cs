@@ -1,11 +1,22 @@
-﻿namespace SalesWebMvc.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SalesWebMvc.Models
 {
     public class Seller
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Display(Name="Birth Date")]
+        [DataType(DataType.Date)]
+
         public DateTime BirthDate { get; set; }
+
+        [DataType(DataType.Currency)]
         public decimal Salary { get; set; }
 
         public int DepartmentId { get; set; }
