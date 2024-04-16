@@ -3,6 +3,7 @@ using Microsoft.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
 using SalesWebMvc;
+using SalesWebMvc.Services;
 
 
 internal class Program
@@ -19,6 +20,7 @@ internal class Program
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddScoped<SeedingService>();
+        builder.Services.AddScoped<SellerService>();
 
         var app = builder.Build();
 
