@@ -14,33 +14,35 @@ namespace SalesWebMvc.Services
             _context = context;
         }
 
-        public List<Seller> FindAll() => _context.Seller.OrderBy(i => i.Name).ToList();
+        public async Task<List<Seller>> FindAllAsync()
+            => await _context.Seller.OrderBy(i => i.Name).ToListAsync();
 
-        public Seller FindById(int id) => _context.Seller.Include(i => i.Department).FirstOrDefault(i => i.Id == id);
+        public async Task<Seller?> FindByIdAsync(int id)
+            => await _context.Seller.Include(i => i.Department).FirstOrDefaultAsync(i => i.Id == id);
 
-        public void Insert(Seller seller)
+        public async Task InsertAsync(Seller seller)
         {
             _context.Seller.Add(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Remove(int id)
+        public async Task RemoveAsync(int id)
         {
             var seller = _context.Seller.Find(id);
             _context.Seller.Remove(seller);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Seller seller)
+        public async Task UpdateAsync(Seller seller)
         {
-            if (!_context.Seller.Any(i => i.Id == seller.Id))
+            if (!await _context.Seller.AnyAsync(i => i.Id == seller.Id))
             {
                 throw new NotFoundException("Id not found!");
             }
             try
             {
                 _context.Update(seller);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException ex)
             {
