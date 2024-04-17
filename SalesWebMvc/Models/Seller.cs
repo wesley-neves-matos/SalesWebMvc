@@ -27,7 +27,7 @@ namespace SalesWebMvc.Models
         [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal Salary { get; set; }
 
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
         public int DepartmentId { get; set; }
         ICollection<SalesRecord> SalesRecords { get; set; } = new List<SalesRecord>();
 
